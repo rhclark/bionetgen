@@ -5,7 +5,8 @@ os:
 language: c++
 sudo: false
 
-
+deploy:
+  skip_cleanup: true
 
 notifications:
   slack: faederlab:l0waIGp58v8ZV74N7QmXGoWs
