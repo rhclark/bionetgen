@@ -12,4 +12,10 @@ notifications:
 script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
   
-  
+
+deploy:
+  provider: gcs
+  access_key_id: GOOGHK4SCMDVVDNXWLUF 	
+  secret_access_key: 5+9g20s/y5pwm1Pt22RVb60pD8bNXqPgDLM6cs9m 	
+  bucket: bionetgen-travis-rhclark
+  skip_cleanup: true  
