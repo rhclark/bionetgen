@@ -72,12 +72,17 @@ sub BNGconsole
                 # $linein =~ s/^(\S+)\s*//;
                 # my $filename = $1;
 
+
                 my $filename = $linein;
-		if ($filename =~ m/.*--.*/) {
+                if ($filename =~ m/.*--.*/) {
                   $filename =~ s/^(.*?)(--.*)//;
-                  $filename = $1;  $filename =~ s/^\s+//;  $filename =~ s/\s+$//;   
                   $linein   = $2;
+                  $filename = $1;
+                } else {
+                  $linein = "";
                 }
+                $filename =~ s/^\s+//; $filename =~ s/\s+$//;
+
 
                 unless ($filename and -e $filename)
                 {
