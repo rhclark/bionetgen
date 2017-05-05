@@ -1,0 +1,45 @@
+<html>
+<head>
+<title> Defects in RuleBender </title>
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
+</head>
+<body>
+<font size="4">
+<center> <h1> 
+The Build Process for BioNetGen <br>
+Is Almost Completely Automated
+</h1></center> 
+<center>
+Note that "automated" means that a functioning YAML file has been created 
+for either Travis or Appveyor.  As a result of this automation, the build
+machine and build process will be stabilized for future builds.  
+Jose did most of the automation, but Rob did enough of the builds, so 
+that he now has an in-depth understanding of the build process.  There was 
+a little more cross pollenation and cooperation between Jose and Rob than
+the table suggests, but basically the table shows who did what.
+</center>
+<br>
+
+<center>
+<table border="2">
+<tr><td>Product</td><td>System Used</td><td>Automated Build</td>
+                                        <td>Automated Test</td>
+                                        <td>Who Did The Automation</td>
+</tr>
+<tr><td>run_network Lin64</td><td bgcolor="yellow">Travis</td><td>Yes</td><td>Yes</td><td>Jose</td></tr>
+<tr><td>run_network Osx64</td><td bgcolor="yellow">Travis</td><td>Yes</td><td>Yes</td><td>Jose</td></tr>
+<tr><td>run_network Win32</td><td bgcolor="orange">CygWin</td><td>No</td><td>No</td><td bgcolor="pink">Rob revived make_dist.pl</td></tr>
+<tr><td>run_network Win64</td><td bgcolor="green">Appveyor</td><td>Yes</td><td>Yes</td><td>Jose </td></tr>
+<tr><td>NFsim Lin64</td><td bgcolor="yellow">Travis</td><td>Yes</td><td>Yes</td><td>Jose</td></tr>
+<tr><td>NFsim Osx64</td><td  bgcolor="yellow">Travis</td><td>Yes</td><td>Yes</td><td>Jose</td></tr>
+<tr><td>NFsim Win32</td><td  bgcolor="green">Appveyor</td><td>Yes</td><td>Yes</td><td bgcolor="pink" >Rob (from scratch)</td></tr>
+<tr><td>NFsim Win64</td><td  bgcolor="green">Appveyor</td><td>Yes</td><td>Yes</td><td>Jose using Ninja</td></tr>
+<tr><td>sbmlTranslator Lin64</td><td  bgcolor="yellow">Travis</td><td>Yes</td><td>Yes</td><td>Jose</td></tr>
+<tr><td>sbmlTranslator Osx64</td><td  bgcolor="yellow">Travis</td><td>Yes</td><td>Yes</td><td>Jose</td></tr>
+<tr><td>sbmlTranslator Win64</td><td  bgcolor="green">Appveyor</td><td>Yes</td><td>Yes</td><td>Jose</td></tr>
+</table>
+</center>
+
+</font>
+</body>
+</html>
