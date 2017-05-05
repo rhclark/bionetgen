@@ -29,7 +29,7 @@ install:
   - C:\cygwin\setup-x86.exe -qnNdO -R C:/cygwin -s http://cygwin.mirror.constant.com -l C:/cygwin/var/cache/setup
 
   
-script:
+build_script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
 before_deploy:
   - cd BioNetGen-2.3.0/Network3 && make clean && cd ../../.. && mkdir dist && mv ./bng2/BioNetGen-2.3.0 ./dist/$TRAVIS_OS_NAME && cd dist && tar cf $TRAVIS_OS_NAME.tar $TRAVIS_OS_NAME && gzip $TRAVIS_OS_NAME.tar && rm -rf $TRAVIS_OS_NAME && cd ..
@@ -47,7 +47,7 @@ deploy:
 # Run installer silently, output to C:\projects\julia
 #  - C:\projects\julia-binary.exe /S /D=C:\projects\julia
 
-build_script:
+
    - perl -version
 # Need to convert from shallow to complete for Pkg.clone to work
 #  - IF EXIST .git\shallow (git fetch --unshallow)
