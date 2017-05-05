@@ -80,8 +80,7 @@ my $chmod_flags = "+x";
 my $sys_shell = "sh";
 # autoreconf
 my $build_subdir = "Network3";
-#  RHC was    my $sys_autoconf = "autoreconf";
-my $sys_autoconf = "autoconf";
+my $sys_autoconf = "autoreconf";
 my @autoconf_flags = ("--no-recursive","--install");
 # configure
 my $sys_configure = "configure";
