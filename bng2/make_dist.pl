@@ -343,6 +343,7 @@ if (defined $bindir)
         #    $new_install = ($modtime_libdir > $modtime_libdir) ? 1 : 0;
         #}
 
+        if (1 == 0) {
         if ($new_install)
         {
             print "extracting ${libfile} . . .\n";
@@ -350,7 +351,11 @@ if (defined $bindir)
             unless( system(@args)==0 )
             {  print "make_dist.pl error:\ncannot extract library archive file ($?)";  exit -1;  }
         }
+        }
     }
+
+
+
 
     # run autoconf
     print "generating $build_subdir configuration scripts . . .\n";
