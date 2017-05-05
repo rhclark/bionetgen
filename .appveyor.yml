@@ -1,120 +1,59 @@
+os: unstable
+
 environment:
-    matrix:
-    - arch: x86_64
-      bits: 64
-    - arch: i686
-      bits: 32
-
-install:
-  - ps: |
-      [Environment]::SetEnvironmentVariable("MSYS2_PATH_TYPE", "inherit", "Machine")
-      $arch = $env:Arch
-      $bits = $env:Bits
-      $msys = "msys$bits"
-      $mingw = "mingw$bits"
-      $mingwUpper = $mingw.ToUpper()
-      $buildFolder = $env:APPVEYOR_BUILD_FOLDER
-      $posixBuildFolder = $buildFolder -Replace '\\', '/'
-      $env:PATH="C:\$msys\$mingw\bin;C:\$msys\usr\bin;$env:PATH"
-      function bash($command, $dieOnError = $true) {
-        ""
-        Write-Host $command
-        & "C:\$msys\usr\bin\sh.exe" --login -c "MSYSTEM=$mingwUpper . /etc/profile && cd $posixBuildFolder && $command"
-        if ($LASTEXITCODE -eq 0) {
-          Write-Host "'$command' succeeded. While its output might be red, it exited with '0'." -ForegroundColor Green
-        } else {
-          Write-Host "'$command' failed with exit code $LASTEXITCODE! " -ForegroundColor Red -NoNewline
-          if ($dieOnError) {
-            Write-Host "Exiting." -ForegroundColor Red
-            exit $LASTEXITCODE
-          } else {
-            "Continuing."
-          }
-        }
-      }
-      # 32-bit MSYS2 is not offered on AppVeyor yet, so we need to install it.
-      if ($arch -eq "i686") {
-        Write-Host "Installing 32-bit MSYS2..." -ForegroundColor Cyan
-
-        # download installer
-        $zipPath = "$($env:USERPROFILE)\msys2-i686-latest.tar.xz"
-        $tarPath = "$($env:USERPROFILE)\msys2-i686-latest.tar"
-
-        "Downloading MSYS2 installation package..."
-        (New-Object Net.WebClient).DownloadFile('http://repo.msys2.org/distrib/msys2-i686-latest.tar.xz', $zipPath)
-
-        Write-Host "Unzipping $zipPath..."
-        7z x $zipPath -y -o"$env:USERPROFILE" | Out-Null
-        Write-Host "Untaring $tarPath to C:\msys32\..."
-        7z x $tarPath -y -oC:\ | Out-Null
-        del $zipPath
-        del $tarPath
-        Write-Host "32-bit MSYS2 installed" -ForegroundColor Green
-
-        bash "pacman --sync --noconfirm --needed pacman pacman-mirrors"
-        bash "pacman --sync --noconfirm --needed VCS"
-        bash "pacman --sync --noconfirm --needed base-devel"
-        bash "pacman --sync --noconfirm --needed msys2-devel"
-        bash "pacman --sync --noconfirm --needed mingw-w64-$arch-toolchain"
-      }
-
-      bash "pacman --sync --noconfirm --needed mingw-w64-$arch-SDL"
-
-build_script:
-  - ps: |
-      bash "autoreconf --install --include=/$mingw/share/aclocal/"
-      bash "./configure"
-      bash "make"
-      xcopy C:\$msys\$mingw\bin\SDL.dll .\
-
-      if ($arch -eq "i686") {
-        xcopy C:\$msys\$mingw\bin\libgcc_s_dw2-1.dll .\
-        xcopy C:\$msys\$mingw\bin\libwinpthread-1.dll .\
-      }
-
-test_script:
-  - ps: |
-      $exe = "$buildFolder\schismtracker.exe"
-      if (Test-Path $exe) {
-        Write-Host "'$exe' exists. Continuing." -ForegroundColor Green
-      } else {
-        Write-Host "'$exe' does not exist. Exiting." -ForegroundColor Red
-        exit 1
-      }
-      Start-Process -Wait -FilePath $exe -ArgumentList '--version'
-      $result = Get-Content "stdout.txt"
-      if ($result -Match 'Schism Tracker') {
-        Write-Host "'$exe --version' output 'Schism Tracker'. Success!" -ForegroundColor Green
-      } elseif ([string]::IsNullOrWhiteSpace($result)) {
-        Write-Host "'$exe --version' did not output anything. It might be damaged." -ForegroundColor Red
-        exit 1
-      } else {
-        Write-Host "'$exe --version' did not output 'Schism Tracker' as expected. The result was:" -ForegroundColor Red
-        Write-Host $result -ForegroundColor Red
-        exit 1
-      }
-on_failure:
-  - dir /s /b > dir.txt
-  - if exist "stdout.txt" 7z a -tzip schismtracker_debug_logs.zip "stdout.txt" > nul
-  - if exist "stderr.txt" 7z a -tzip schismtracker_debug_logs.zip "stderr.txt" > nul
-  - if exist "dir.txt" 7z a -tzip schismtracker_debug_logs.zip "dir.txt" > nul
-  - if exist "config.log" 7z a -tzip schismtracker_debug_logs.zip "config.log" > nul
-  - if exist "configure.ac" 7z a -tzip schismtracker_debug_logs.zip "configure.ac" > nul
-  - if exist "configure" 7z a -tzip schismtracker_debug_logs.zip "configure" > nul
-  - if exist "C:\msys%bits%\mingw%bits%\bin\sdl-config" 7z a -tzip schismtracker_debug_logs.zip "C:\msys%bits%\mingw%bits%\bin\sdl-config" > nul
-
-on_finish:
-  - if exist "schismtracker_debug_logs.zip" appveyor PushArtifact "schismtracker_debug_logs.zip"
-  - if exist "schismtracker.exe" 7z a -tzip schismtracker.zip "schismtracker.exe" > nul
-  - if exist "SDL.dll" 7z a -tzip schismtracker.zip "SDL.dll" > nul
-  - if exist "libgcc_s_dw2-1.dll" 7z a -tzip schismtracker.zip "libgcc_s_dw2-1.dll" > nul
-  - if exist "libwinpthread-1.dll" 7z a -tzip schismtracker.zip "libwinpthread-1.dll" > nul
-  - if exist "schismtracker.zip" appveyor PushArtifact "schismtracker.zip"
-
-artifacts:
-  - path: '*.zip'
+  matrix:
+    - JULIAVERSION: "WOWOWEWO"
+branches:
+  only:
+    - master
+    - /release-.*/
 
 notifications:
-  on_build_success: false
-  on_build_failure: false
-  on_build_status_changed: true
+  - provider: Email
+    on_build_success: false
+    on_build_failure: false
+    on_build_status_changed: false
+
+before_build:
+  - cmd: ECHO this is batch  %APPVEYOR_ACCOUNT_NAME%
+  - cmd: ECHO this is batch  %APPVEYOR_PROJECT_NAME%
+  - ls -l
+  - uname -a
+
+platform: x86
+#build:
+#  - ls -l
+#  - PS: Exit-AppVeyorBuild
+  
+install:
+  - appveyor DownloadFile https://cygwin.com/setup-x86.exe -FileName C:\cygwin\setup-x86.exe
+  - C:\cygwin\setup-x86.exe -qnNdO -R C:/cygwin -s http://cygwin.mirror.constant.com -l C:/cygwin/var/cache/setup
+
+  
+script:
+  - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
+before_deploy:
+  - cd BioNetGen-2.3.0/Network3 && make clean && cd ../../.. && mkdir dist && mv ./bng2/BioNetGen-2.3.0 ./dist/$TRAVIS_OS_NAME && cd dist && tar cf $TRAVIS_OS_NAME.tar $TRAVIS_OS_NAME && gzip $TRAVIS_OS_NAME.tar && rm -rf $TRAVIS_OS_NAME && cd ..
+deploy:
+#install:
+# If there's a newer build queued for the same PR, cancel this one
+#  - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER -and $env:APPVEYOR_BUILD_NUMBER -ne ((Invoke-RestMethod `
+#        https://ci.appveyor.com/api/projects/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/history?recordsNumber=50).builds | `
+#        Where-Object pullRequestId -eq $env:APPVEYOR_PULL_REQUEST_NUMBER)[0].buildNumber) { `
+#        throw "There are newer queued builds for this pull request, failing early." }
+# Download most recent Julia Windows binary
+#  - ps: (new-object net.webclient).DownloadFile(
+#        $("http://s3.amazonaws.com/"+$env:JULIAVERSION),
+#        "C:\projects\julia-binary.exe")
+# Run installer silently, output to C:\projects\julia
+#  - C:\projects\julia-binary.exe /S /D=C:\projects\julia
+
+build_script:
+   - perl -version
+# Need to convert from shallow to complete for Pkg.clone to work
+#  - IF EXIST .git\shallow (git fetch --unshallow)
+#  - C:\projects\julia\bin\julia -e "versioninfo();
+#      Pkg.clone(pwd(), \"Sundials\"); Pkg.build(\"Sundials\")"
+
+#test_script:
+#- C:\projects\julia\bin\julia --check-bounds=yes -e "Pkg.test(\"Sundials\")"
