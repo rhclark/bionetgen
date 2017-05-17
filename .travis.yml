@@ -19,6 +19,7 @@ script:
 after_success:
   - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
+
 #deploy:
 #  provider: gcs
 #  access_key_id: GOOGHK4SCMDVVDNXWLUF 	
