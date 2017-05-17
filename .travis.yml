@@ -13,9 +13,9 @@ env:
 notifications:
    slack: 
      faederlab:l0waIGp58v8ZV74N7QmXGoWs      
-#     template:
-#       - "%{repository} (%{commit}) : %{message} %{foo} "
-#       - "Build details: %{build_url}"      
+     template:
+       - "%{repository} (%{commit}) : %{message} %{foo} "
+       - "Build details: %{build_url}"      
 #       - "Distribution Package:  http://www.midcapsignals.com/midcap/junk/spag.html"
    
 script:
