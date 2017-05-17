@@ -10,11 +10,12 @@ env:
     - secure: "ifMdh+XG3tYjLP65ASs9REcCBCLIaYCRda3pDbuoGACEpyqaEyTAbu5D/kVRZS58gUOOGDqZEgeA0qghbWAV1suEVfrkXTkJHkG7B+4kAUDmaeo210oMYBKM+KcMxsYNSU2uemn8QDdxbHj0z51OZmzkmEUiLmSxovETn5XAf5OlaPmn67MujC/ZxKrrpwhOSZjx/gzXkrsWnx1MJxH484EjJEClpBLSExy6mrEDXMflOt6PivJpmCenwTsZkIw3GqK0OYT8D2rY4RxzvSkXQqHCrjDQbHKerrSVFdaK9KrDo1Gs/QlGnFlPmaROudd/lYH/JDSloha8K/4t1wzXP+zAgKKFOVDl6E1STPlUlkRFY7JyCRkr38Zxw3078KyZKH1Qpqh2whQwUXUD7Ao346X39hV5IOLTeATYA39JcIVjDoHIGlwvr6RwDBmCfWq8dtupOCakWeHiBjfKFt5uAtF6tVpp04PodtCeCKZ+/i0Zpmwejh/WTMwxmwsox+gUwL++Yx+DEycb8dfPMQqfncEcgMV5iaCuL0ZqndqxywPyocXHnIMxwJxNUutTgpyPSAQB1DWDNgg7UsatNZVkoH/uzwuQJ4JPKf2COPGdr2fST3/PYVpMJXTtmCd7Os3AG3KkB49DdKso7e/DRLcZ77KgUmAxMA/q2gLrY1Ts9O0="
     - secure: "fpYWuT8BKkZpFjNzq2Jm1XWnZUV/rdOY+FBtIe8jlQnSobhcHODNGWgHYXKxInWAyMx0sBXh4FxWU0xWl5pdSsp15s5ObnDgAFaQVOCEFNxnY49pCcgTP2Gas3Qugbk/sr/edvwK98AijrITyuxu5Mz8NZzCE4EzbJvTloPhS8UetenzSn+SED5jjyOc7xH1RmW9gukmI5DCIVvAZMV3Lr3/m4EobX/WzO2IAi8Gm5e3Cy9HdkQg3uh827t1oMmhwdilbAsithvRRpBKyyHxfYA28j6fVldZqr2HZTlpj0dRHAKL+0UZsp4KmhG+GT+Ct49+NlY368YyqItRYi4A0Iou1zOiukZKgPqMXACyOzXiEPul6stftGSLcLsuGib+QORX0nkEMGx9aSESesn6xeoCluUpWL7H3/GecB2kFrGRMdJlieZOS/s9rP4aJIyONCKfAfEp7lOLFnO7m5yrY+gJciiSOZxLPdLBm8+9B3fuOOEVn3TyN0E2fX7DVmwM+Fki05bMssdz8/MejcGXWj9g+CXjAtsnprtf+3PTDmNwKYXX4WBi918wk0/sQB7Qoy0HtlIltbxrh7kYsEQaA7922POaGtLWA8t/oFuGwUGmkgqsw2tG86eNieW4mXKULx8hb7DOZvwsIGStzmvaOU7lsCKMPbhfpGx1G6Q3l0I="
 
-
-
-
-#notifications:
-#  slack: faederlab:l0waIGp58v8ZV74N7QmXGoWs
+notifications:
+   slack: faederlab:l0waIGp58v8ZV74N7QmXGoWs      
+     template:
+       - "%{repository} (%{commit}) : %{message} %{foo} "
+       - "Build details: %{build_url}"      
+       - "Distribution Package:  http://www.midcapsignals.com/midcap/junk/spag.html"
    
 script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
