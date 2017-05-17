@@ -21,7 +21,7 @@ script:
   
 after_success:
   - pwd
-  - "curl -T ./bng2/VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
+  - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
 
 #deploy:
