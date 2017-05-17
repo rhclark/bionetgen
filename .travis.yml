@@ -15,7 +15,7 @@ notifications:
      template:
        - "%{repository} (%{commit}) : %{message} %{foo} "
        - "Build details: %{build_url}"      
-       - "Distribution Package:  http://www.midcapsignals.com/midcap/junk/spag.html"
+#       - "Distribution Package:  http://www.midcapsignals.com/midcap/junk/spag.html"
    
 script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
