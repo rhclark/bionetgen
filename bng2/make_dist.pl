@@ -165,7 +165,7 @@ else
 }
 
 
-unless ($codename eq "")
+if ($codename ne "")
 {   #  codename no longer permitted
         print "make_dist.pl error:\nSorry, codename '$codename' is no longer used.\n";
         exit -1;
