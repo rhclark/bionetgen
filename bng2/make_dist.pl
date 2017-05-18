@@ -165,6 +165,13 @@ else
 }
 
 
+unless ($codename eq "")
+{   #  codename no longer permitted
+        print "make_dist.pl error:\nSorry, codename '$codename' is no longer used.\n";
+        exit -1;
+}
+
+
 # define distribution name, directory and archive file
 my $dist_name    = "BioNetGen-${version}" . (($codename eq '') ? '' : "-${codename}");
 my $dist_dir     = File::Spec->catdir( $outdir, $dist_name );
