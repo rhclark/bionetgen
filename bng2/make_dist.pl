@@ -38,17 +38,17 @@ my $outdir = File::Spec->curdir();
 # binary subdirectory (default=undef)
 my $bindir;
  # if true, creates a tar.gz compressed archive
-my $archive = 0;
+my $archive = 1;
 # if true, compiles and installs the binaries
 my $build = 0;
 # if true, validates installation
 my $validate = 0;
 # if true, overwrites existing distribution (default 0)
-my $overwrite = 0;
+my $overwrite = 1;
 # distribution version (default undefined)
 my $version = '';
 # distribution codename (default="stable")
-my $codename = 'stable';
+my $codename = '';
 # regex for excluding files (exclude make_dist.pl itself and all files beginning with "." or "_" or ending in "~")
 my $exclude_files = '(^\.|^_|~$|\.old$|^make_dist\.pl$)';
 
