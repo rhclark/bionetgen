@@ -165,12 +165,12 @@ else
 }
 
 
-#if ($codename ne "")
-#{   #  codename no longer permitted
+if ($codename ne "")
+{   #  codename no longer permitted
 #        print "make_dist.pl error:\nSorry, codename (like stable or beta) is no longer used.";
 #        print "\nYour input shows codename=".$codename."\n";
 #        exit -1;
-#}
+}
 
 
 # define distribution name, directory and archive file
