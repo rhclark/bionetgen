@@ -38,13 +38,13 @@ my $outdir = File::Spec->curdir();
 # binary subdirectory (default=undef)
 my $bindir;
  # if true, creates a tar.gz compressed archive
-my $archive = 1;
+my $archive = 0;
 # if true, compiles and installs the binaries
 my $build = 0;
 # if true, validates installation
 my $validate = 0;
 # if true, overwrites existing distribution (default 0)
-my $overwrite = 1;
+my $overwrite = 0;
 # distribution version (default undefined)
 my $version = '';
 # distribution codename (default="stable")
