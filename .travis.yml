@@ -1,6 +1,10 @@
 os:
   - osx
+env:
+  - PLATFORM_ENV=MacOSX
+#  - PLATFORM_ENV=Linux
 #  - linux
+  
 
 language: c++
 sudo: false
