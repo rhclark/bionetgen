@@ -15,15 +15,15 @@ do
   vbase="BioNetGen-$var"
 done < "$input"
 
-
-
 if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
-  vall=$vbase"-Linux.tar.gz" 
+  rall=$vbase"-Linux.tar.gz" 
 else
-  vall=$vbase"-MacOSX.tar.gz" 
+  rall=$vbase"-MacOSX.tar.gz" 
 fi
+lall=$vbase".tar.gz" 
 
-echo " Name of package is " $vall
+echo " Local name of package is " $lall
+echo " Remote name of package is " $rall
 
-ls -l $vall
+ls -l $lall
 #  curl -T $vall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/
