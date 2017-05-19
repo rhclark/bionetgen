@@ -27,9 +27,14 @@ notifications:
    
 script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
-  
+
+
+
+print %{PLATFORM_ENV}
+
+
+
 after_success:
-  - say %{PLATFORM_ENV}
   - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
 
