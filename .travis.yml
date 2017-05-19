@@ -29,6 +29,7 @@ script:
 
 
 after_success:
+  - source dist_package.bash
 #  - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
 
