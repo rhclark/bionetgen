@@ -29,7 +29,7 @@ script:
 
 
 after_success:
-  - source dist_package.bash $PLATFORM_ENV
+  - source dist_package.bash %{PLATFORM_ENV}
 #  - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
 
