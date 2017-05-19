@@ -5,7 +5,6 @@ env:
 #  - PLATFORM_ENV=Linux
 #  - linux
   
-
 language: c++
 sudo: false
 
@@ -29,13 +28,8 @@ script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
 
 
-
-print %{PLATFORM_ENV}
-
-
-
 after_success:
-  - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
+#  - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
 
 #deploy:
