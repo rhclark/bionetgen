@@ -26,4 +26,4 @@ echo " Local name of package is " $lall
 echo " Remote name of package is " $rall
 
 ls -l $lall
-curl -T $lall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/$vall
+curl -T $lall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/$rall
