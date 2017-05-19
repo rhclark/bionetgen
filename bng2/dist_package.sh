@@ -9,7 +9,7 @@ echo '  '
 echo '  '
 
 # Presumably there is only one line in the file:  VERSION
-input="./bng2/VERSION"
+input="./VERSION"
 while read -r var
 do
   vbase="BioNetGen-$var"
