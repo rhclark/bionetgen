@@ -29,7 +29,7 @@ script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
   
 after_success:
-  - echo $MacOSX
+  - echo $PLATFORM_ENV
   - "curl -T ./VERSION  -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
 
