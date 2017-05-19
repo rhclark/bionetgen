@@ -25,7 +25,7 @@ notifications:
        - "Build details:  %{build_url}"
    
 script:
-  - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
+  - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate --archive --overwrite
 
 
 after_success:
