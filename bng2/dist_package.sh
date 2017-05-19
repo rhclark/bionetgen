@@ -25,4 +25,5 @@ fi
 
 echo " Name of package is " $vall
 
+ls -l $vall
 #  curl -T $vall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/
