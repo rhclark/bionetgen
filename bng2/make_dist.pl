@@ -482,7 +482,7 @@ if ($archive)
 
 
 # all done
-print "\nFinished creating distribution.\n";
+print "\nFinished creating distribution. ${archive_file} \n";
 exit 0;
 
 
