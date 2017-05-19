@@ -2,8 +2,11 @@
 #
 #  Read the VERSION file and construct the name of the installation package.
 echo " PLATFORM_ENV = " ${TRAVIS_OS_NAME} 
+echo " pwd = " ; pwd
 uname -a
 
+echo '  '
+echo '  '
 
 # Presumably there is only one line in the file:  VERSION
 input="./bng2/VERSION"
