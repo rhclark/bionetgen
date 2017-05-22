@@ -17,8 +17,10 @@ done < "$input"
 
 if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
   rall=$vbase"-Linux.tar.gz" 
+  platform="Linux"
 else
   rall=$vbase"-MacOSX.tar.gz" 
+  platform="MacOSX"
 fi
 lall=$vbase".tar.gz" 
 
@@ -27,3 +29,8 @@ echo " Remote name of package is " $rall
 
 ls -l $lall
 curl -T $lall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/$rall
+
+# Move a simple HTML page over to the server, to provide a pointer to the distribution package
+perl make_html.pl  --version $var  --platform $platform
+html_name="BioNetGen-"$platform".html"
+curl -T $html_name  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/
