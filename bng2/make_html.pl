@@ -134,8 +134,8 @@ open(FNEW,">$ofile_name");
     }
   }
   print FNEW "<center><h1>\n";
-  print FNEW "<a href=\"http://www.midcasignals.com/midcap/junk/BioNetGen-".$relevel."-".$platform.$zip_type."\">\n";
-  print FNEW "http://www.midcapsignals.com/midcap/junk/BioNetGen-".$relevel."-".$platform.$zip_type."</a>\n";
+  print FNEW "<a href=\"ftp://www.midcasignals.com/midcap/junk/BioNetGen-".$relevel."-".$platform.$zip_type."\">\n";
+  print FNEW "ftp://www.midcapsignals.com/midcap/junk/BioNetGen-".$relevel."-".$platform.$zip_type."</a>\n";
   print FNEW "</h1></center>\n";
   print FNEW "<br>\n";
   print FNEW "<br>\n";
