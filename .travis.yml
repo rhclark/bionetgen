@@ -20,8 +20,8 @@ notifications:
      template:
        - "Build: <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>)  %{result} in %{duration}"
        - "Author: %{author}   Repository@Branch: %{repository}@%{branch}"
-       - "Distribution Package:  http://www.midcapsignals.com/midcap/junk/spag.html"
-       - "Build details:  %{build_url} $PLATFORM_ENV "
+       - "Distribution Package:  http://www.midcapsignals.com/midcap/junk/BioNetGen-${TRAVIS_OS_NAME}.html"
+       - "Build details:  %{build_url} "
    
 script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate --archive --overwrite
