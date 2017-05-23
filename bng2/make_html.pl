@@ -88,6 +88,26 @@ sub write_html {
 
   my $ofile_name = "BioNetGen-".$platform.".html";
 
+  my $zip_type  = '';
+  my $travis_os = '';
+  if ($platform eq "Linux") {
+    $zip_type = ".tar.gz";  $travis_os = "linux";
+  } else {
+    if ($platform eq "MacOSX") {
+    $zip_type = ".tar.gz";  $travis_os = "linux";
+    } else {
+      if ($platform eq "Windows") {
+        $zip_type = ".zip";  $travis_os = "windows";
+      } else {
+        print "Invalid platform: ".$platform."\n";
+        exit;
+      }
+    }
+  }
+
+
+
+
 open(FNEW,">$ofile_name");
   print FNEW "<html>\n";
   print FNEW "<head>\n";
@@ -122,25 +142,16 @@ open(FNEW,">$ofile_name");
 
   print FNEW "If you are a BioNetGen developer, and you wish to get \n";
   print FNEW "access to beta release ".$relevel." for ".$platform.", please click here: <br>\n";
-  my $zip_type = '';
-  if (($platform eq "Linux") or ($platform eq "MacOSX")) {
-    $zip_type = ".tar.gz";
-  } else {
-    if ($platform eq "Windows") {
-      $zip_type = ".zip";
-    } else {
-      print "Invalid platform: ".$platform."\n";
-      exit;
-    }
-  }
   print FNEW "<center><h1>\n";
-  print FNEW "<a href=\"ftp://ftp.midcasignals.com/midcap/junk/BioNetGen-".$relevel."-".$platform.$zip_type."\">\n";
-  print FNEW "ftp://ftp.midcapsignals.com/midcap/junk/BioNetGen-".$relevel."-".$platform.$zip_type."</a>\n";
+  print FNEW "<a href=\"BioNetGen-".$relevel."-".$travis_os.$zip_type."\">\n";
+  print FNEW "BioNetGen-".$relevel."-".$travis_os.$zip_type."</a>\n";
   print FNEW "</h1></center>\n";
   print FNEW "<br>\n";
   print FNEW "<br>\n";
 
   print FNEW "</font></body></html>\n";
+  
+  close(FNEW);
 
   return;
 }
