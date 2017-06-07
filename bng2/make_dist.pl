@@ -164,14 +164,12 @@ else
     print "version: $version  codename: $codename\n";
 }
 
-
 if ($codename ne "")
 {   #  codename no longer permitted
         print "make_dist.pl error:\nSorry, codename (like stable or beta) is no longer used.";
         print "\nYour input shows codename=".$codename."\n";
         exit -1;
 }
-
 
 # define distribution name, directory and archive file
 my $dist_name    = "BioNetGen-${version}" . (($codename eq '') ? '' : "-${codename}");
@@ -329,7 +327,7 @@ if (defined $bindir)
         exit -1;
     }
     
-    print "preparing libaries . . .\n";
+    print "preparing libraries . . .\n";
     foreach my $libfile (@include_libraries)
     {
         # get absolute path of libfile
@@ -351,9 +349,6 @@ if (defined $bindir)
         #    $new_install = ($modtime_libdir > $modtime_libdir) ? 1 : 0;
         #}
 
-        print " Tar file is: \n";
-        print  $abs_libfile."\n";
-        
         if ($new_install)
         {
             print "extracting ${libfile} . . .\n";
@@ -362,9 +357,6 @@ if (defined $bindir)
             {  print "make_dist.pl error:\ncannot extract library archive file ($?)";  exit -1;  }
         }
     }
-
-
-
 
     # run autoconf
     print "generating $build_subdir configuration scripts . . .\n";
@@ -429,6 +421,19 @@ if (defined $bindir)
     		exit -1;
     }
 
+    print "Current working directory is now: \n";
+    system("pwd");
+    chdir $dist_name;
+    chdir "Network3";
+    print "Current working directory is now: \n";
+    system("pwd");
+
+    system(" make clean ");
+    chdir "..";
+    chdir "..";
+    print "Current working directory is now: \n";
+    system("pwd");
+
     if ($validate)
     {
         #  validate workdir
@@ -482,7 +487,7 @@ if ($archive)
 
 
 # all done
-print "\nFinished creating distribution. ${archive_file} \n";
+print "\nFinished creating distribution.\n";
 exit 0;
 
 
@@ -567,16 +572,12 @@ sub copy_dir
 sub display_help
 {
 print <<END_HELP
-
 make_dist.pl
-
 SYNOPSIS:
    make_dist.pl [OPTS] 
-
 DESCRIPTION:
    Create a BioNetGen distribution from the repository. By default, attempts
    to extract version number and codename from VERSION file in BNG root.
-
 OPTIONS:
    --bngpath PATH  : path to BioNetGen repository (default: script directory)
    --outdir  PATH  : output path (default: current directory)
@@ -588,7 +589,6 @@ OPTIONS:
    --validate      : validate installation 
    --overwrite     : overwrite any existing distribution
    --help          : display help
-
 END_HELP
 
 }
