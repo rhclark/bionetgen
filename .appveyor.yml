@@ -3,6 +3,7 @@ os: unstable
 environment:
   matrix:
     - JULIAVERSION: "WOWOWEWO"
+    - JULIAVERSION: "TRYTHIS"
 branches:
   only:
     - master
