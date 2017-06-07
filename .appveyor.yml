@@ -2,8 +2,11 @@ os: unstable
 
 environment:
   matrix:
-    - builder: "cygwin"; platform: "Win32"
-    - builder: "cygwin"; platform: "x64"
+    - builder: cygwin
+      platform: Win32
+      
+    - builder: cygwin 
+      platform: x64
 #    - MY_VAR: "WOWOWEWO"
 #    - MY_VAR: "TRYTHIS"
 branches:
