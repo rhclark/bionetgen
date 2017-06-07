@@ -2,8 +2,8 @@ os: unstable
 
 environment:
   matrix:
-    - JULIAVERSION: "WOWOWEWO"
-    - JULIAVERSION: "TRYTHIS"
+    - MY_VAR: "WOWOWEWO"
+    - MY_VAR: "TRYTHIS"
 branches:
   only:
     - master
