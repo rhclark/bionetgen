@@ -9,7 +9,7 @@ echo '  '
 echo '  '
 
 echo '   platform 1 = ' ${platform}
-echo '   platform 2 = ' %{platform}%
+echo '   platform 2 = ' %platform%
 echo '   platform 3 = ' %{platform}
 
 exit;
