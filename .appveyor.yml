@@ -23,6 +23,8 @@ before_build:
   - cmd: ECHO this is batch  %APPVEYOR_ACCOUNT_NAME%
   - ls -l
   - uname -a
+  - source .dist_windows.sh
+
 
 platform: x86
 #build:
