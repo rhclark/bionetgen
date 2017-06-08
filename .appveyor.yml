@@ -23,7 +23,6 @@ before_build:
   - cmd: ECHO this is batch  %APPVEYOR_ACCOUNT_NAME%
   - ls -l
   - uname -a
-  - source .dist_windows.sh
 
 
 platform: x86
@@ -40,6 +39,7 @@ install:
 #  - CMD: SET PATH=C:\cygwin\bin;%PATH% 
 #  - CMD: SET PATH=C:\cygwin64\bin;%PATH% 
   - cmd: ECHO %PATH% 
+  - source .dist_windows.sh
   
 build_script:
   - perl -version
