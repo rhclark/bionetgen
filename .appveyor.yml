@@ -43,5 +43,5 @@ build_script:
   - perl -version
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
 before_deploy:
-  - cd BioNetGen-2.3.0/Network3 && make clean && cd ../../.. && mkdir dist && mv ./bng2/BioNetGen-2.3.0 ./dist/$TRAVIS_OS_NAME && cd dist && tar cf $TRAVIS_OS_NAME.tar $TRAVIS_OS_NAME && gzip $TRAVIS_OS_NAME.tar && rm -rf $TRAVIS_OS_NAME && cd ..
+  - source .dist_windows.sh
 #deploy:
