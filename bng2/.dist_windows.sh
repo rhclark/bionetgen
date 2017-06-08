@@ -8,6 +8,12 @@ uname -a
 echo '  '
 echo '  '
 
+echo '   platform 1 = ' ${platform}
+echo '   platform 2 = ' %{platform}%
+echo '   platform 3 = ' %{platform}
+
+exit;
+
 # Presumably there is only one line in the file:  VERSION
 input="./VERSION"
 while read -r var
