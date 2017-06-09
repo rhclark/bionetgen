@@ -424,8 +424,8 @@ if (defined $bindir)
     print "Current working directory is now: \n";
     system("pwd");
     chdir $dist_name;
-    chdir "Network3";
     system("find . -print | grep dll");
+    chdir "Network3";
     print "Current working directory is now: \n";
     system("pwd");
 
