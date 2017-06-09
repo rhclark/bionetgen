@@ -16,6 +16,8 @@ echo '   platform 1 = ' ${platform}
 echo '   platform 2 = ' %platform%
 echo '   platform 3 = ' %{platform}
 
+where ZIP
+where zip
 zip README.md
 ls -l READ*
 exit;
