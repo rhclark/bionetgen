@@ -37,6 +37,9 @@ install:
   - if "%builder%"=="cygwin" ( if "%platform%"=="x64"   ( set "PATH=C:\cygwin64\bin;%PATH%" ; set "TRAVIS_OS_NAME=x64"  ))
   - cmd: ECHO %PATH% 
   
+deploy:
+  - skip_cleanup: true
+  
 build_script:
   - perl -version
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
