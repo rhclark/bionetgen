@@ -45,7 +45,7 @@ build_script:
   
   
 artifacts:
-  - path: 'BioNetGen*.zip'
+  - path: './bng2/BioNetGen*.zip'
     name:  BioNetGen
   
 deploy:
