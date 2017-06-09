@@ -44,9 +44,9 @@ build_script:
   - bash .dist_windows.sh %platform%
   
   
-#artifacts:
-#  - path: BioNetGen-2.3.0-Win32.zip
-#    name: BioNetGen
+artifacts:
+  - path: 'BioNetGen*.zip'
+    name:  BioNetGen
   
 deploy:
   provider: FTP
