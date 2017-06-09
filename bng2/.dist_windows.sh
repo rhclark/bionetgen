@@ -62,7 +62,8 @@ fi
 zip -r -q  $vbase.zip 
 lall=$vbase".zip" 
 
-echo " Local name of package is " $lall
+echo " Version base name is      " $vbase
+echo " Local name of package is  " $lall
 echo " Remote name of package is " $rall
 
 ls -l $lall
