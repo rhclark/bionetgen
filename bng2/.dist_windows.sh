@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 #  Read the VERSION file and construct the name of the installation package.
+echo " Param 1 = " $1
 echo " PLATFORM_ENV = " $TRAVIS_OS_NAME 
 echo " PLATFORM_ENV = " ${TRAVIS_OS_NAME} 
 echo " PLATFORM_ENV = " %TRAVIS_OS_NAME% 
