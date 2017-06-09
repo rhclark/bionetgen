@@ -40,7 +40,7 @@ install:
 build_script:
   - perl -version
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
-  - bash ./bng2/.dist_windows.sh %platform%
+  - bash .dist_windows.sh %platform%
   
 #before_deploy:
 #  - bash ./bng2/.dist_windows.sh %platform%
