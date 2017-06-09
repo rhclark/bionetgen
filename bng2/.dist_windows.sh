@@ -59,7 +59,7 @@ fi
 
 
 
-zip -r -q  $vbase.zip 
+zip -r -q  $vbase.zip $vbase
 lall=$vbase".zip" 
 
 echo " Version base name is      " $vbase
