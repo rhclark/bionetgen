@@ -65,7 +65,7 @@ echo " Version base name is      " $vbase
 echo " Remote name of package is " $rall
 
 ls -l 
-curl -T $rall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/$rall
+#curl -T $rall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/$rall
 
 # Move a simple HTML page over to the server, to provide a pointer to the distribution package
 perl .make_html.pl  --version $vname  --platform $platform
