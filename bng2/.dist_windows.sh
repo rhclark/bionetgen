@@ -1,28 +1,11 @@
 #!/bin/bash
 #
 #  Read the VERSION file and construct the name of the installation package.
-echo " Param 1 = " $1
-echo " PLATFORM_ENV = " $TRAVIS_OS_NAME 
-echo " PLATFORM_ENV = " ${TRAVIS_OS_NAME} 
-echo " PLATFORM_ENV = " %TRAVIS_OS_NAME% 
-echo " PLATFORM_ENV = " %{TRAVIS_OS_NAME}% 
-echo " pwd = " ; pwd
 uname -a
+echo " Windows Environment = " $1
 
 echo '  '
 echo '  '
-
-echo '   platform 1 = ' ${platform}
-echo '   platform 2 = ' %platform%
-echo '   platform 3 = ' %{platform}
-
-where ZIP
-where zip
-rm -f aa.html
-cp automation.html aa.html
-zip -r -q aa.zip aa.html
-ls -l a*
-exit;
 
 # Presumably there is only one line in the file:  VERSION
 input="./VERSION"
@@ -32,53 +15,52 @@ do
   vname=$var
 done < "$input"
 
-if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
-  rall=$vbase"-Linux.tar.gz" 
-  platform="Linux"
-  platform_travis="linux"
+if [ "$1" = "Win32" ]; then
+  rall=$vbase"-Win32.zip" 
+  platform="Win32"
+  platform_travis="win32"
 else
-  rall=$vbase"-MacOSX.tar.gz" 
-  platform="MacOSX"
-  platform_travis="osx"
+  rall=$vbase"-Win64.zip" 
+  platform="Win64"
+  platform_travis="win64"
 fi
 
 
 #  Get the NFsim and Atomizer files that are needed
-cd  $vbase
-curl -O  http://www.midcapsignals.com/midcap/junk/NFsim-$platform_travis
-mv       NFsim-$platform_travis  ./bin/NFsim
-chmod    +x                      ./bin/NFsim
-curl -O  http://www.midcapsignals.com/midcap/junk/NFsim-source-$platform_travis.tar.gz
-mkdir source_NFsim
-cd    source_NFsim
-tar  xvf ../NFsim-source-$platform_travis.tar.gz
-rm  -f    ./validate/*.tar.gz   
-rm  -f    ./validate/*.tar.bz2
-rm  -f   ../NFsim-source-$platform_travis.tar.gz
-cd ..
-cd ..
+#cd  $vbase
+#curl -O  http://www.midcapsignals.com/midcap/junk/NFsim-$platform_travis
+#mv       NFsim-$platform_travis  ./bin/NFsim
+#chmod    +x                      ./bin/NFsim
+#curl -O  http://www.midcapsignals.com/midcap/junk/NFsim-source-$platform_travis.tar.gz
+#mkdir source_NFsim
+#cd    source_NFsim
+#tar  xvf ../NFsim-source-$platform_travis.tar.gz
+#rm  -f    ./validate/*.tar.gz   
+#rm  -f    ./validate/*.tar.bz2
+#rm  -f   ../NFsim-source-$platform_travis.tar.gz
+#cd ..
+#cd ..
 
 
 
 #  Get the NFsim and Atomizer files that are needed
-cd  $vbase
-curl -O  http://www.midcapsignals.com/midcap/junk/sbmlTranslator-$platform_travis
-mv       sbmlTranslator-$platform_travis  ./bin/sbmlTranslator
-chmod    +x                               ./bin/sbmlTranslator
-curl -O  http://www.midcapsignals.com/midcap/junk/Atomizer-source-$platform_travis.tar.gz
-mkdir source_Atomizer
-cd    source_Atomizer
-tar  xvf ../Atomizer-source-$platform_travis.tar.gz
-rm  -f   ../Atomizer-source-$platform_travis.tar.gz
-cd ..
-cd ..
+#cd  $vbase
+#curl -O  http://www.midcapsignals.com/midcap/junk/sbmlTranslator-$platform_travis
+#mv       sbmlTranslator-$platform_travis  ./bin/sbmlTranslator
+#chmod    +x                               ./bin/sbmlTranslator
+#curl -O  http://www.midcapsignals.com/midcap/junk/Atomizer-source-$platform_travis.tar.gz
+#mkdir source_Atomizer
+#cd    source_Atomizer
+#tar  xvf ../Atomizer-source-$platform_travis.tar.gz
+#rm  -f   ../Atomizer-source-$platform_travis.tar.gz
+#cd ..
+#cd ..
 
 
 
 
-tar  cvf $vbase.tar $vbase
-gzip     $vbase.tar
-lall=$vbase".tar.gz" 
+zip -r -q  $vbase.zip 
+lall=$vbase".zip" 
 
 echo " Local name of package is " $lall
 echo " Remote name of package is " $rall
