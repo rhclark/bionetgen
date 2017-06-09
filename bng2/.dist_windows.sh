@@ -20,7 +20,7 @@ where ZIP
 where zip
 rm -f aa.html
 cp automation.html aa.html
-zip aa.html
+zip -r -q aa.zip aa.html
 ls -l a*
 exit;
 
