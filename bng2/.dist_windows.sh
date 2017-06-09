@@ -67,9 +67,9 @@ echo " Local name of package is  " $lall
 echo " Remote name of package is " $rall
 
 ls -l $lall
-curl -T $lall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/$rall
+#curl -T $lall  -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/$rall
 
 # Move a simple HTML page over to the server, to provide a pointer to the distribution package
 perl .make_html.pl  --version $vname  --platform $platform
 html_name="BioNetGen-"$platform".html"
-curl -T $html_name -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/
+#curl -T $html_name -u roberthclark:P1ttsburgh ftp://ftp.midcapsignals.com/midcap/junk/
