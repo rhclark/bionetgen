@@ -425,6 +425,7 @@ if (defined $bindir)
     system("pwd");
     chdir $dist_name;
     chdir "Network3";
+    system("ls -l ./lib");
     print "Current working directory is now: \n";
     system("pwd");
 
