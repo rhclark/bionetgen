@@ -18,8 +18,10 @@ echo '   platform 3 = ' %{platform}
 
 where ZIP
 where zip
-zip README.md
-ls -l READ*
+rm -f aa.html
+cp automation.html aa.html
+zip aa.html
+ls -l a*
 exit;
 
 # Presumably there is only one line in the file:  VERSION
