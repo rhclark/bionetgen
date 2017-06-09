@@ -38,6 +38,7 @@ install:
   - cmd: ECHO %PATH% 
   
 deploy:
+  - provider: FTP
   - skip_cleanup: true
   
 build_script:
