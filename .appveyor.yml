@@ -36,15 +36,24 @@ install:
   - if "%builder%"=="cygwin" ( if "%platform%"=="Win32" ( set "PATH=C:\cygwin\bin;%PATH%" ; set "TRAVIS_OS_NAME=Win32" ))
   - if "%builder%"=="cygwin" ( if "%platform%"=="x64"   ( set "PATH=C:\cygwin64\bin;%PATH%" ; set "TRAVIS_OS_NAME=x64"  ))
   - cmd: ECHO %PATH% 
-  
-deploy:
-  - provider: FTP
-  - skip_cleanup: true
-  
+
+
 build_script:
   - perl -version
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
   - bash .dist_windows.sh %platform%
   
-#before_deploy:
-#  - bash ./bng2/.dist_windows.sh %platform%
+  
+artifacts:
+  - path: BioNetGen-2.3.0-Win32.zip
+    name: BioNetGen
+  
+deploy:
+  - provider: FTP
+  - protocol: ftp
+  - skip_cleanup: true
+  - host: ftp.midcapsignals.com/midcap/d_appveyor
+  - username: roberthclark
+  - password:
+      - secure: K22E4pSAup6/htlGmoSBMw==  
+  
