@@ -424,7 +424,7 @@ if (defined $bindir)
     print "Current working directory is now: \n";
     system("pwd");
     chdir $dist_name;
-    system("find  /usr/i686-pc-cygwin  -print | grep dll");
+    system("ls /cygdrive/c/cygwin/bin/*dll");
     chdir "Network3";
     print "Current working directory is now: \n";
     system("pwd");
