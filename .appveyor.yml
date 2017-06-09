@@ -7,8 +7,6 @@ environment:
       
     - builder: cygwin 
       platform: x64
-#    - MY_VAR: "WOWOWEWO"
-#    - MY_VAR: "TRYTHIS"
 branches:
   only:
     - master
@@ -37,13 +35,12 @@ install:
   - if "%builder%"=="cygwin" ( if "%platform%"=="x64"   ( C:\cygwin64\setup-x86_64.exe -qnNdO -R C:/cygwin64 -s http://cygwin.mirror.constant.com -l C:/cygwin64/var/cache/setup -P openssl-devel -P libiodbc-devel -P libiodbc2 -P odbc-mysql -P odbc-pgsql -P odbc-sqlite3 -P libmysqlclient-devel -P libsqlite3-devel  -P libcrypt-devel -P zip))
   - if "%builder%"=="cygwin" ( if "%platform%"=="Win32" ( set "PATH=C:\cygwin\bin;%PATH%" ; set "TRAVIS_OS_NAME=Win32" ))
   - if "%builder%"=="cygwin" ( if "%platform%"=="x64"   ( set "PATH=C:\cygwin64\bin;%PATH%" ; set "TRAVIS_OS_NAME=x64"  ))
-#  - CMD: SET PATH=C:\cygwin\bin;%PATH% 
-#  - CMD: SET PATH=C:\cygwin64\bin;%PATH% 
   - cmd: ECHO %PATH% 
   
 build_script:
   - perl -version
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
-  
-before_deploy:
   - bash ./bng2/.dist_windows.sh %platform%
+  
+#before_deploy:
+#  - bash ./bng2/.dist_windows.sh %platform%
