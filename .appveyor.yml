@@ -49,11 +49,11 @@ artifacts:
     name: BioNetGen
   
 deploy:
-  - provider: FTP
-  - protocol: ftp
-  - skip_cleanup: true
-  - host: ftp.midcapsignals.com/midcap/d_appveyor
-  - username: roberthclark
-  - password:
-      - secure: K22E4pSAup6/htlGmoSBMw==  
+  provider: FTP
+  protocol: ftp
+  skip_cleanup: true
+  host: ftp.midcapsignals.com/midcap/d_appveyor
+  username: roberthclark
+  password:
+    secure: K22E4pSAup6/htlGmoSBMw==  
   
