@@ -425,6 +425,7 @@ if (defined $bindir)
     print "Current working directory is now: \n";
     system("pwd");
     chdir $dist_name;
+    system("ls /cygdrive64/c/cygwin/bin");
     system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$full_dist_bin);
     system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$full_dist_bin);
     system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$full_dist_bin);
