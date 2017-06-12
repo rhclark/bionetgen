@@ -426,7 +426,7 @@ if (defined $bindir)
     print "Current working directory is now: \n";
     system("pwd");
     
-    $path_head = substr($ENV{PATH},0,12);  
+    $path_head = substr($ENV{PATH},0,20);  
     print " path_head is ".$path_head."\n";
     chdir $dist_name;
     system("ls /cygdrive/c/cygwin64/bin");
@@ -444,7 +444,6 @@ if (defined $bindir)
       system("cp /cygdrive/c/cygwin/bin/cyggcc*dll  ".$full_dist_bin);
     }
 
-    system("ls  ".$full_dist_bin);
     chdir "Network3";
     print "Current working directory is now: \n";
     system("pwd");
