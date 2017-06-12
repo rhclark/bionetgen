@@ -425,6 +425,7 @@ if (defined $bindir)
     my $full_dist_bin = File::Spec->catfile($abs_dist_dir, "bin");
     print "Current working directory is now: \n";
     system("pwd");
+    print " Path is ".$ENV{PATH}."\n";
     
     chdir $dist_name;
     
