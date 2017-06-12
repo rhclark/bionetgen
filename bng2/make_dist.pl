@@ -428,14 +428,14 @@ if (defined $bindir)
     
     chdir $dist_name;
     
-    if (index($ENV{PATH},"/cygwin64/") > -1) {
+    if (index($ENV{PATH},"/cygwin64/bin") > -1) {
       system("cp /cygdrive/c/cygwin64/bin/cygwin*dll  ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin64/bin/cygstdc*dll ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin64/bin/cygz*dll    ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin64/bin/cyggcc*dll  ".$full_dist_bin);
     }
 
-    if (index($ENV{PATH},"/cygwin/") > -1) {
+    if (index($ENV{PATH},"/cygwin/bin") > -1) {
       system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$full_dist_bin);
