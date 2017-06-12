@@ -97,7 +97,7 @@ my $sys_perl = "perl";
 my $validate_subdir = "Validate";
 my $validate_script = "validate_examples.pl";
 my @validate_flags  = ();
-my $path_head       = '';
+
 
 ###                                                          ###
 ###  BEGIN MAIN SCRIPT, no user options beyond this point!!  ###
@@ -426,21 +426,16 @@ if (defined $bindir)
     print "Current working directory is now: \n";
     system("pwd");
     
-    # This is not really guaranteed to work.  I makes the assumption that the /bin directory
-    # for Cygwin is within the first 50 characters of the path.  This is reasonable but not
-    # guaranteed.
-    $path_head = substr($ENV{PATH},0,50);  
-    print " path_head is ".$path_head."\n";
     chdir $dist_name;
     
-    if (index($path_head,"/cygwin64/") > -1) {
+    if (index($ENV{PATH},"/cygwin64/") > -1) {
       system("cp /cygdrive/c/cygwin64/bin/cygwin*dll  ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin64/bin/cygstdc*dll ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin64/bin/cygz*dll    ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin64/bin/cyggcc*dll  ".$full_dist_bin);
     }
 
-    if (index($path_head,"/cygwin/") > -1) {
+    if (index($ENV{PATH},"/cygwin/") > -1) {
       system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$full_dist_bin);
