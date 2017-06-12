@@ -97,6 +97,7 @@ my $sys_perl = "perl";
 my $validate_subdir = "Validate";
 my $validate_script = "validate_examples.pl";
 my @validate_flags  = ();
+my $path_head       = '';
 
 ###                                                          ###
 ###  BEGIN MAIN SCRIPT, no user options beyond this point!!  ###
@@ -424,12 +425,25 @@ if (defined $bindir)
     my $full_dist_bin = File::Spec->catfile($abs_dist_dir, "bin");
     print "Current working directory is now: \n";
     system("pwd");
+    
+    $path_head = substr($ENV{PATH},0,12);  
+    print " path_head is ".$path_head."\n";
     chdir $dist_name;
     system("ls /cygdrive/c/cygwin64/bin");
-    system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$full_dist_bin);
-    system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$full_dist_bin);
-    system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$full_dist_bin);
-    system("cp /cygdrive/c/cygwin/bin/cyggcc*dll  ".$full_dist_bin);
+    if (index($path_head,"cygwin64") > -1) {
+      system("cp /cygdrive/c/cygwin64/bin/cygwin*dll  ".$full_dist_bin);
+      system("cp /cygdrive/c/cygwin64/bin/cygstdc*dll ".$full_dist_bin);
+      system("cp /cygdrive/c/cygwin64/bin/cygz*dll    ".$full_dist_bin);
+      system("cp /cygdrive/c/cygwin64/bin/cyggcc*dll  ".$full_dist_bin);
+    }
+
+    if (index($path_head,"cygwin/") > -1) {
+      system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$full_dist_bin);
+      system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$full_dist_bin);
+      system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$full_dist_bin);
+      system("cp /cygdrive/c/cygwin/bin/cyggcc*dll  ".$full_dist_bin);
+    }
+
     system("ls  ".$full_dist_bin);
     chdir "Network3";
     print "Current working directory is now: \n";
