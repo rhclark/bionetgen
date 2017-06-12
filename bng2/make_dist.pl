@@ -424,7 +424,11 @@ if (defined $bindir)
     print "Current working directory is now: \n";
     system("pwd");
     chdir $dist_name;
-    system("ls /cygdrive/c/cygwin/bin/*dll");
+    system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$dist_dir);
+    system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$dist_dir);
+    system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$dist_dir);
+    system("cp /cygdrive/c/cygwin/bin/cyggcc*dll  ".$dist_dir);
+    system("ls  ".$dist_dir);
     chdir "Network3";
     print "Current working directory is now: \n";
     system("pwd");
