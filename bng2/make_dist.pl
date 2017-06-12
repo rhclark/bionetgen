@@ -421,14 +421,15 @@ if (defined $bindir)
     		exit -1;
     }
 
+    my $full_dist_bin = File::Spec->catfile($abs_dist_dir, "bin");
     print "Current working directory is now: \n";
     system("pwd");
     chdir $dist_name;
-    system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$dist_dir);
-    system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$dist_dir);
-    system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$dist_dir);
-    system("cp /cygdrive/c/cygwin/bin/cyggcc*dll  ".$dist_dir);
-    system("ls  ".$dist_dir);
+    system("cp /cygdrive/c/cygwin/bin/cygwin*dll  ".$full_dist_bin);
+    system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$full_dist_bin);
+    system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$full_dist_bin);
+    system("cp /cygdrive/c/cygwin/bin/cyggcc*dll  ".$full_dist_bin);
+    system("ls  ".$full_dist_bin);
     chdir "Network3";
     print "Current working directory is now: \n";
     system("pwd");
