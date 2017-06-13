@@ -19,10 +19,20 @@ if [ "$1" = "Win32" ]; then
   rall=$vbase"-Win32.zip" 
   platform="Win32"
   platform_travis="win32"
+  
+  cp /cygdrive/c/cygwin/bin/cygwin*dll  $vbase/bin
+  cp /cygdrive/c/cygwin/bin/cygstdc*dll $vbase/bin
+  cp /cygdrive/c/cygwin/bin/cygz*dll    $vbase/bin
+  cp /cygdrive/c/cygwin/bin/cyggcc*dll  $vbase/bin
 else
   rall=$vbase"-Win64.zip" 
   platform="Win64"
   platform_travis="win64"
+  
+  cp /cygdrive/c/cygwin64/bin/cygwin*dll  $vbase/bin
+  cp /cygdrive/c/cygwin64/bin/cygstdc*dll $vbase/bin
+  cp /cygdrive/c/cygwin64/bin/cygz*dll    $vbase/bin
+  cp /cygdrive/c/cygwin64/bin/cyggcc*dll  $vbase/bin
 fi
 
 
