@@ -425,10 +425,10 @@ if (defined $bindir)
     my $full_dist_bin = File::Spec->catfile($abs_dist_dir, "bin");
     print "Current working directory is now: \n";
     system("pwd");
-    print " Path is ".$ENV{PATH}."\n";
     
     chdir $dist_name;
     
+    if (1 == 0) {
     if (index($ENV{PATH},"/cygwin64/bin") > -1) {
       system("cp /cygdrive/c/cygwin64/bin/cygwin*dll  ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin64/bin/cygstdc*dll ".$full_dist_bin);
@@ -441,6 +441,7 @@ if (defined $bindir)
       system("cp /cygdrive/c/cygwin/bin/cygstdc*dll ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin/bin/cygz*dll    ".$full_dist_bin);
       system("cp /cygdrive/c/cygwin/bin/cyggcc*dll  ".$full_dist_bin);
+    }
     }
 
     chdir "Network3";
