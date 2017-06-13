@@ -4,7 +4,7 @@ environment:
   matrix:
     - builder: cygwin
       platform: Win32
-      
+             
     - builder: cygwin 
       platform: x64
 branches:
