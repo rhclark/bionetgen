@@ -37,10 +37,9 @@ fi
 
 
 #  Get the NFsim and Atomizer files that are needed
-#cd  $vbase
-#curl -O  http://www.midcapsignals.com/midcap/junk/NFsim-$platform_travis
-#mv       NFsim-$platform_travis  ./bin/NFsim
-#chmod    +x                      ./bin/NFsim
+cd  $vbase
+curl -O  http://www.midcapsignals.com/midcap/d_appveyor/bin/NFsim.$platform_travis.exe
+mv       NFsim.$platform_travis.exe  ./bin/NFsim.exe
 #curl -O  http://www.midcapsignals.com/midcap/junk/NFsim-source-$platform_travis.tar.gz
 #mkdir source_NFsim
 #cd    source_NFsim
@@ -49,7 +48,7 @@ fi
 #rm  -f    ./validate/*.tar.bz2
 #rm  -f   ../NFsim-source-$platform_travis.tar.gz
 #cd ..
-#cd ..
+cd ..
 
 
 
