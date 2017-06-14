@@ -39,8 +39,9 @@ install:
 
 build_script:
   - perl -version
-  - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate
+  - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build 
   - bash .dist_windows.sh %platform%
+  - perl make_dist.pl --validate
   
   
 artifacts:
