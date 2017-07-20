@@ -28,8 +28,10 @@ script:
   - mkdir slugo
   - cd    slugo
   - git clone https://github.com/rhclark/nfsim-rhclark.git
+  - git clone https://github.com/rhclark/atomizer.git
   - ls
   - ls nfsim-rhclark
+  - ls atomizer  
   - cd ..
 
 
