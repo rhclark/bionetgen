@@ -25,6 +25,12 @@ notifications:
    
 script:
   - cd ./bng2/Network3 && mkdir -p m4 && cd .. && perl make_dist.pl --build --validate --archive --overwrite
+  - mkdir slugo
+  - cd    slugo
+  - git clone https://github.com/rhclark/nfsim-rhclark.git
+  - ls
+  - ls nfsim-rhclark
+  - cd ..
 
 
 after_success:
