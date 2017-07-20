@@ -26,6 +26,12 @@ else
   platform_travis="osx"
 fi
 
+mkdir slugo
+cd    slugo
+git clone  https://github.com/rhclark/terryfy.git
+ls 
+ls terryfy
+cd ..
 
 #  Get the NFsim and Atomizer files that are needed
 cd  $vbase
