@@ -37,7 +37,7 @@ script:
 
 after_success:
   - source dist_package.sh 
-#  - "curl -T ./VERSION   -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
+#   - "curl -T ./VERSION   -u $FTP_USER:$FTP_PASSWORD ftp://ftp.midcapsignals.com/midcap/junk/"
 
 
 #deploy:
